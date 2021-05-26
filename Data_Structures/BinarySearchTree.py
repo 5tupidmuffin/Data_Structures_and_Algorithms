@@ -90,6 +90,36 @@ class BinarySeachTree:
 
         return  # if not found return None
 
+    def delete(self, value):
+        # method is broken
+        if value < self.value:
+            if self.left:
+                self.left.delete(value)
+
+        elif value > self.value:
+            if self.right:
+                self.right.delete(value)
+
+        
+        else:
+            # actaul delete logic
+            if self.left is None and self.right is None:
+                return None
+
+            elif self.left is None and self.right:
+                return self.right
+
+            elif self.right is None and self.left:
+                return self.left
+
+
+            rightSubtree_min = self.right.min()
+            self.value = rightSubtree_min
+            self.right = self.right.delete(rightSubtree_min)
+
+        return self
+
+
 
 # test code
 bst = BinarySeachTree(5)
@@ -101,7 +131,7 @@ bst.add_child(1)
 bst.add_child(9)
 print(bst.inorder())
 
-print(bst.search(0))
+bst.delete(5)
 print(bst.max())
 print(bst.min())
 print(bst.sum())
@@ -109,14 +139,19 @@ print()
 print(bst.preorder())
 print(bst.postorder())
 
+print("deleting 3")
+bst.delete(3)
+print(bst.inorder())
+
 # [1, 3, 5, 6, 7, 8, 9]
-# None
 # 9
 # 1
-# 39
+# 34
 
-# [5, 3, 1, 6, 7, 8, 9]
-# [1, 3, 9, 8, 7, 6, 5]
+# [6, 3, 1, 7, 8, 9]
+# [1, 3, 9, 8, 7, 6]
+# deleting 3
+# [1, 3, 6, 7, 8, 9]
 
 """
 ref:
