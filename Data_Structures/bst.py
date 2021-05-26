@@ -76,7 +76,7 @@ def delete(root, value):
             return None
 
         # if node has one child
-        if root.left is None:
+        elif root.left is None:
             temp = root.right
             root = None
             return temp
@@ -91,7 +91,7 @@ def delete(root, value):
         root.value = temp.value
         root.right = delete(root.right, temp.value)
 
-        return root
+    return root
 
 
 # test code
