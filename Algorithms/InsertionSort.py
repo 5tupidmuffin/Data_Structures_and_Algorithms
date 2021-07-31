@@ -31,7 +31,7 @@ def reverse(seq):
 
         seq[j + 1] = key
 
-arr = [2, 1, 4, 0]
+arr = [2, 1, 4, 5, 0]
 insertionSort(arr)
 print(arr)
 # [0, 1, 2, 4]
